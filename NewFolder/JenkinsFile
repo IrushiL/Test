@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    environment{
+        PRODUCT="ei"
+        VERSION="6.4.0"
+        PRODUCT_NAME="wso2$PRODUCT"
+        PRODUCT_NAME_WITH_VERSION="wso2$PRODUCT-$VERSION"
+    }
+    stages{
+        stage("Pre-Build"){
+            steps {
+                cleanWs()
+                echo "bbb$PRODUCT_NAME_WITH_VERSION"
+                sh '''
+                    #!/bin/bash +x
+                    echo "Pre Steps Completed"
+                '''
+            }
+        }
+        stage("Build"){
+            steps{
+                sh '''
+                    echo build
+                '''
+            }
+        }
+    }
+    post{
+        always{
+            cleanWs()
+        }
+    }
+}
