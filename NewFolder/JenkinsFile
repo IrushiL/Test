@@ -10,6 +10,7 @@ pipeline{
         stage("Pre-Build"){
             steps {
                 cleanWs()
+                echo newFolder created
                 echo "bbb$PRODUCT_NAME_WITH_VERSION"
                 sh '''
                     #!/bin/bash +x
